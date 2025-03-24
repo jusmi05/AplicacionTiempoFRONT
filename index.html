@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+    <title>Aplicación del Tiempo</title>
+</head>
+
+<body>
+    <!-- Mapa -->
+    <div id="map"></div>
+
+    <button id="accept-button" style="display: none;">Aceptar</button>
+
+    <div id="details" style="display: none;">
+        <div id="city-details">
+            <!-- Aquí irán las tarjetas del clima -->
+        </div>
+        <div id="botones" style="margin-top: 20px;">
+            <button id="back-button">Volver al mapa</button>
+            <button id="options-button">Opciones</button>
+        </div>
+    </div>
+
+    <div id="date-picker-div">
+        <!-- Contenedor del formulario -->
+        <div id="form-container">
+            <label for="start_date">Fecha de Inicio</label>
+            <input type="date" id="start_date" />
+            <br>
+            <label for="end_date">Fecha de Fin</label>
+            <input type="date" id="end_date" />
+            <div class="botones">
+                <button id="get-weather-btn">Aceptar</button>
+                <button id="cancel-form-btn" onclick=cancelForm()>Cerrar</button>
+            </div>
+        </div>
+    
+        <!-- Contenedor para el gráfico (ocultado por defecto) -->
+        <div id="chart-container" style="display: none; position: relative; width: 100%; max-width: 800px;">
+            <!-- El gráfico se generará aquí dinámicamente -->
+        </div>
+    </div>         
+
+    <!-- Overlay y menú de opciones -->
+    <div id="overlay"></div>
+    <div id="options-menu">
+        <h3>Datos seleccionados:</h3>
+        <div id="selected-options" class="dropzone">
+            <div class="draggable" draggable="true" data-field="temperatura">Temperatura</div>
+            <div class="draggable" draggable="true" data-field="humedad">Humedad</div>
+        </div>
+
+        <h3>Opciones disponibles:</h3>
+        <div id="available-options" class="dropzone">
+            <div class="draggable" draggable="true" data-field="presion">Presión</div>
+            <div class="draggable" draggable="true" data-field="viento_velocidad">Velocidad del viento</div>
+            <div class="draggable" draggable="true" data-field="viento_direccion">Dirección del viento</div>
+            <div class="draggable" draggable="true" data-field="nubosidad">Nubosidad</div>
+        </div>
+
+        <button onclick="closeOptions()">Cerrar</button>
+    </div>
+
+    <!-- Cargar el script de Leaflet -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
